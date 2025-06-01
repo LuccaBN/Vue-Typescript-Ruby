@@ -1,114 +1,117 @@
+# Vue + TypeScript + Ruby on Rails
 
-# 💼 Vue + TypeScript + Ruby on Rails – Projeto Fullstack
-
-Este projeto é um sistema completo de gestão bancária com frontend em **Vue 3 + TypeScript** e backend em **Ruby on Rails**, conectados por meio de uma API RESTful.
+Este repositório contém uma aplicação web com frontend em **Vue 3 + TypeScript + Vuetify** e backend em **Ruby on Rails**, comunicando-se via API REST.
 
 ---
 
-## 📂 Estrutura do Projeto
+## 📦 Estrutura do Projeto
 
 ```
-VuejsTypeScript/
-│
-├── Frontend/
-│   └── project/  ← Aplicação Vue 3 + TypeScript (Vuetify)
-│
-├── Backend/
-│   └── api-rails-sagat-ai-test/  ← API Rails com autenticação e gestão de contas
+/
+├── Backend/api-rails-sagat-ai-test    # API Ruby on Rails
+└── Frontend/project                   # Aplicação Vue 3 + TypeScript
 ```
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## 🚀 Como rodar o projeto
 
-### Pré-requisitos
+### 🖥️ Frontend (Vue 3 + TypeScript)
 
-- Node.js 18+
-- Yarn ou NPM
-- Ruby 3.x
-- Rails 7+
-- PostgreSQL ou SQLite
-- Docker (opcional)
-
-### 1. Backend (Rails)
-
-```bash
-cd Backend/api-rails-sagat-ai-test
-bundle install
-rails db:create db:migrate db:seed
-rails s
-```
-
-A API estará rodando em `http://localhost:3000`.
-
-### 2. Frontend (Vue)
+1. Acesse a pasta:
 
 ```bash
 cd Frontend/project
+```
+
+2. Instale as dependências:
+
+```bash
 npm install
+```
+
+3. Rode o projeto:
+
+```bash
 npm run serve
 ```
 
-A aplicação Vue estará disponível em `http://localhost:8080`.
+A aplicação estará disponível em `http://localhost:8080`.
+
+---
+
+### 🛠️ Backend (Ruby on Rails com Docker)
+
+1. Acesse a pasta:
+
+```bash
+cd Backend/api-rails-sagat-ai-test
+```
+
+2. Certifique-se de ter o Docker e Docker Compose instalados.
+
+3. Execute o backend com:
+
+```bash
+docker-compose up --build
+```
+
+O backend será iniciado com a API exposta (por padrão em `http://localhost:3000`).
 
 ---
 
 ## ✅ Funcionalidades Implementadas
 
-### Frontend
-
-- Tela de login e cadastro com validação
-- Autenticação com token JWT
-- Dashboard com contas bancárias do usuário
-- Transferência entre contas
-- Listagem de movimentações
-- Criação de novas contas
-
-### Backend
-
-- Autenticação de usuários (`/auth/sign_in`, `/auth/sign_up`)
-- Gerenciamento de contas bancárias
-- Endpoint para transferência entre contas
-- Restrições e validações no modelo de transação
-
----
-
-## 📡 Endpoints Utilizados
-
-| Método | Endpoint                         | Descrição                            |
-|--------|----------------------------------|----------------------------------------|
-| POST   | `/auth/sign_in`                  | Login de usuário                       |
-| POST   | `/auth/sign_up`                  | Cadastro de usuário                    |
-| GET    | `/users/infos`                   | Busca dados do usuário logado         |
-| GET    | `/users/bank_accounts/my`        | Contas bancárias do usuário           |
-| GET    | `/users/bank_accounts`           | Todas as contas cadastradas           |
-| POST   | `/users/bank_account_transfers`  | Realiza transferência entre contas    |
+- Login com JWT
+- Cadastro de usuário
+- Auto-login após cadastro
+- Painel com:
+  - Nome do titular
+  - Número da conta e saldo
+  - Alternância entre contas
+  - Últimas 3 transações (enviadas e recebidas)
+- Transferência entre contas (com validação)
+- Extrato completo com filtros:
+  - Tipo (enviada/recebida)
+  - Intervalo de datas
+  - Valores mínimos e máximos
+- Paleta de cores personalizada baseada na identidade visual fornecida
 
 ---
 
-## 🛠️ O que faria diferente com mais tempo
+## 📡 Endpoints da API utilizados
 
-- Criaria testes automatizados (unitários e e2e)
-- Implementaria validações mais robustas no frontend
-- Melhoraria o layout responsivo para mobile
-- Adicionaria loading spinners nas requisições
-- Usaria Vuex ou Pinia para melhor gerenciamento de estado
-- Refatoraria o backend com serializers (como ActiveModel::Serializer ou Fast JSON API)
+### Autenticação
 
----
+- `PUT /auth/sign_in` — Login
+- `POST /auth/sign_up` — Cadastro
 
-## 📸 Imagens das Telas (opcional)
+### Contas e Transações
 
-Você pode adicionar imagens com:
-
-```md
-![Login](./prints/login.png)
-![Dashboard](./prints/dashboard.png)
-```
+- `GET /users/infos` — Dados do usuário logado
+- `GET /users/bank_accounts/my` — Contas do usuário
+- `GET /users/bank_accounts` — Todas as contas (para validação de destino)
+- `POST /users/bank_account_transfers` — Efetuar transferência
+- `GET /users/bank_account_transfers/statements` — Extrato com filtros
 
 ---
 
-## 🧑‍💻 Desenvolvido por
+## 🧠 O que faria diferente com mais tempo
 
-**LuccaBN**  
-🔗 https://github.com/LuccaBN/Vue-Typescript-Ruby
+- Implementaria testes automatizados (frontend e backend)
+- Adicionaria mensagens de feedback com Snackbar
+- Melhoraria a responsividade em telas menores
+- Implementaria autenticação JWT com refresh token
+- Criaria uma documentação OpenAPI (Swagger)
+
+---
+
+## 🖼️ Telas (opcional)
+
+<sub>📸 Prints podem ser adicionados aqui para ilustrar o funcionamento do sistema.</sub>
+
+---
+
+## 📄 Licença
+
+Projeto desenvolvido com fins educacionais e demonstrativos.
