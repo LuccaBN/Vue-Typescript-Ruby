@@ -106,12 +106,6 @@ O backend será iniciado com a API exposta (por padrão em `http://localhost:300
 
 ---
 
-## 🖼️ Telas (opcional)
-
-<sub>📸 Prints podem ser adicionados aqui para ilustrar o funcionamento do sistema.</sub>
-
----
-
 ## 📄 Licença
 
 Projeto desenvolvido com fins educacionais e demonstrativos.
